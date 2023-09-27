@@ -7,10 +7,10 @@ use App\Src\Enums\BookGenre;
 
 class Book
 {
-    public $title;
-    public $genre;
-    public $pages;
-    public $authors;
+    private $title;
+    private $genre;
+    private $pages;
+    private $authors;
 
     function __construct($title, $genre, $pages, $authors)
     {
@@ -29,7 +29,6 @@ class Book
             $arr = explode(" ", $item);
             $filtered = array_filter($arr, function($el) {
                 if (strlen($el) > 1) {
-                    echo $el.'|';
                     return trim($el) !== "";
                 }
             });
@@ -41,6 +40,50 @@ class Book
         $this->title = $title;
         $this->genre = $genre;
         $this->pages = $pages;
-        $this->authors = implode(", ", array_map('trim', $filteredString));
+        $this->authors = substr(implode(", ", array_map('trim', $filteredString)), 0, -2);
+    }
+
+    function getTitle() {
+        return $this->title;
+    }
+    
+    function setTitle($value) {
+        $this->title = $value;
+    }
+
+    function getGenre() {
+        return $this->genre;
+    }
+
+    function setGenre($value) {
+        $this->genre = $value;
+    }
+
+    function getPages() {
+        return $this->pages;
+    }
+
+    function setPages($value) {
+        $this->pages = $value;
+    }
+
+    function getAuthors() {
+        return $this->authors;
+    }
+
+    function setAuthors($value) {
+        $filteredString = array_map( function($item) {
+            $arr = explode(" ", $item);
+            $filtered = array_filter($arr, function($el) {
+                if (strlen($el) > 1) {
+                    return trim($el) !== "";
+                }
+            });
+
+            return implode(" ", $filtered);
+
+        }, explode(",", $value));
+
+        $this->authors = substr(implode(", ", array_map('trim', $filteredString)), 0, -1);
     }
 }
