@@ -24,7 +24,7 @@ class Item
             throw new \Exception("Invalid item rarity!");
         }
         $this->name = $name;
-        $this->type = $type;
+        $this->type = $type->name;
         $this->rarity = $rarity;
         $this->stats[] = $stats;
     }

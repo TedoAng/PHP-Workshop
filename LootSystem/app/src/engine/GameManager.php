@@ -2,6 +2,8 @@
 
 namespace App\Src\Engine;
 
+use App\Src\Models\Hero;
+
 class GameManager
 {
     static function createHero($name)
