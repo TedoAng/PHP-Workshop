@@ -1,0 +1,17 @@
+{
+    "name": "tedo/oop",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Teodor Angelov",
+            "email": "teodor.angelov@fastcomet.com"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^4.7"
+    }
+}
